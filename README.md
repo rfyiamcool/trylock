@@ -1,6 +1,8 @@
 # trylock
 
-the code is so easy. Add TryLock and IsLocked function base on sync.Mutex. then A lot of times, I don't want to block when Mutex is locked.
+the code is so easy.
+
+Only add TryLock and IsLocked function base on sync.Mutex. A lot of times, I don't want to block when Mutex is locked.
 
 ### install
 
