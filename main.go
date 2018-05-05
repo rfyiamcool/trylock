@@ -29,12 +29,12 @@ func (m *Mutex) Lock() {
 
 func (m *Mutex) Unlock() {
 	m.in.Unlock()
-	atomic.AddInt32(m.status, UnlockedFlag)
+	atomic.StoreInt32(m.status, UnlockedFlag)
 }
 
 func (m *Mutex) TryLock() bool {
 	if atomic.CompareAndSwapInt32((*int32)(unsafe.Pointer(&m.in)), UnlockedFlag, LockedFlag) {
-		atomic.AddInt32(m.status, LockedFlag)
+		atomic.StoreInt32(m.status, LockedFlag)
 		return true
 	}
 	return false
